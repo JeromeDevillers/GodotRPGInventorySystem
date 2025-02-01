@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm2047uajgc4j"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_k70mb"]
+[ext_resource type="Resource" uid="uid://dtbxelp4t0082" path="res://test_inv.tres" id="2_at35h"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_36dtj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_btv1j"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_k70mb")
+inventory_data = ExtResource("2_at35h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91668, 0)
+mesh = SubResource("CapsuleMesh_36dtj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2572, 0)
+shape = SubResource("CapsuleShape3D_btv1j")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.86622, -0.774765)
+
+[node name="InteractRay" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -2.5)
+collision_mask = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

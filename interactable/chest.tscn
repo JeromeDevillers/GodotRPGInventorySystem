@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfklmf2u3l254"]
+
+[ext_resource type="Script" path="res://interactable/chest.gd" id="1_u3ibu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kml11"]
+albedo_color = Color(1.49205e-06, 0.690229, 0.112824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3t40c"]
+material = SubResource("StandardMaterial3D_kml11")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n6h3h"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Chest" type="StaticBody3D" groups=["external_inventory"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_u3ibu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_3t40c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_n6h3h")
